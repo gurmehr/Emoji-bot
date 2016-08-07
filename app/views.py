@@ -55,7 +55,7 @@ def return_random_quote():
     return quotes_arr[0]
 
 
-quotes_arr = quotes_string.split('\n')
+#quotes_arr = quotes_string.split('\n')
 
 PAGE_ACCESS_TOKEN ='EAANMgk5XWZBEBALsqxrZBGDD3SxOUxePVnvPwy2ZCB0vS7J1fdaSMZCCwGWwpwf0bZAMb0qwaznFWkqZCDqhQPeZBfRzGlCaNZBd9DUTzuaLxuCM2ZC33Gq4qdDws6B1MJhW6FovTOvSTsZAkqeokWZBQuW7JJotTnYXWrLLDZCeJUeamQZDZD'
 
