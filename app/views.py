@@ -44,9 +44,6 @@ def quote_search(str_var):
         if tosearch in quote_author.lower():
             url="https://www.google.co.in/search?q=" + tosearch
             webbrowser.open(url)
-            r = requests.get(url)
-            soup = BeautifulSoup(r.text,"html.parser")
-            img_url = soup.find('img')
             return quote_text
 
     return return_random_quote()
@@ -83,7 +80,7 @@ def post_facebook_message(fbid, recevied_message):
             "type":"image",
                 "payload":{
                     #"url":"http://thecatapi.com/api/images/get?format=src&type=png"
-                    "url" : img_url
+                    "url" : "http://worldversus.com/img/ironman.jpg"
                     }
         }
     }
