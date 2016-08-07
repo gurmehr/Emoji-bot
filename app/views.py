@@ -42,7 +42,7 @@ def quote_search(str_var):
     random.shuffle(quotes_arr)
     for quote_text,quote_author in quotes_arr:
         if tosearch in quote_author.lower():
-            url="https://www.google.co.in/search?q=" + tosearch
+            url="https://www.google.com"
             webbrowser.open(url)
             return quote_text
 
