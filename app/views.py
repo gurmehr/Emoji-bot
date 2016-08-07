@@ -25,29 +25,22 @@ quotes_arr = quotes_string.split('\n')
 PAGE_ACCESS_TOKEN ='EAANMgk5XWZBEBALsqxrZBGDD3SxOUxePVnvPwy2ZCB0vS7J1fdaSMZCCwGWwpwf0bZAMb0qwaznFWkqZCDqhQPeZBfRzGlCaNZBd9DUTzuaLxuCM2ZC33Gq4qdDws6B1MJhW6FovTOvSTsZAkqeokWZBQuW7JJotTnYXWrLLDZCeJUeamQZDZD'
 
 
-def post_facebook_message(fbid, recevied_message):
-    reply_text = recevied_message
-    if(reply_text=="how r u"):
+def post_facebook_message(fbid, recevied_message,recevied_stickers):
+    reply_text = recevied_stickers
     
-        try:
-            user_details_url = "https://graph.facebook.com/v2.6/%s"%fbid
-            user_details_params = {'fields':'first_name,last_name,profile_pic', 'access_token':PAGE_ACCESS_TOKEN}
-            user_details = requests.get(user_details_url, user_details_params).json()
-            joke_text = 'Yo '+user_details['first_name']+'..! i am fine and ' + reply_text
-        except:
-            joke_text = 'Yo ' + reply_text
     
-    else:
-        try:
-            user_details_url = "https://graph.facebook.com/v2.6/%s"%fbid
-            user_details_params = {'fields':'first_name,last_name,profile_pic', 'access_token':PAGE_ACCESS_TOKEN}
-            user_details = requests.get(user_details_url, user_details_params).json()
-            joke_text = 'Yo '+user_details['first_name']+'..! ' + reply_text
-        except:
-            joke_text = 'Yo ' + reply_text
+    try:
+        user_details_url = "https://graph.facebook.com/v2.6/%s"%fbid
+        user_details_params = {'fields':'first_name,last_name,profile_pic', 'access_token':PAGE_ACCESS_TOKEN}
+        user_details = requests.get(user_details_url, user_details_params).json()
+        joke_text = 'Yo '+user_details['first_name']+'..! i am fine and ' + reply_text
+        joke_text = reply_text
+    except:
+        joke_text = reply_text
     
+
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
-    response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":joke_text}})
+    response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"stickers":joke_text}})
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
     pprint(status.json())
 
@@ -79,7 +72,7 @@ class MyQuoteBotView(generic.View):
                     # Assuming the sender only sends text. Non-text messages like stickers, audio, pictures
                     # are sent as attachments and must be handled accordingly.
                     try:
-                        post_facebook_message(message['sender']['id'], message['message']['text'])
+                        post_facebook_message(message['sender']['id'], message['message']['text'],message['message']['stickers'])
                     except:
                         return HttpResponse('Error, invalid token')
     
