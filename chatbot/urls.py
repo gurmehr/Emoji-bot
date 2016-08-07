@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from app import views as appviews
 urlpatterns = []
 urlpatterns = [
                 url(r'^admin/', include(admin.site.urls)),
+                url(r'^$', appviews.index),
                 url(r'^fb_quotebot/', include('app.urls')),
                ]
