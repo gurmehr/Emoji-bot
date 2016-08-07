@@ -25,7 +25,7 @@ quotes_arr = quotes_string.split('\n')
 PAGE_ACCESS_TOKEN ='EAANMgk5XWZBEBALsqxrZBGDD3SxOUxePVnvPwy2ZCB0vS7J1fdaSMZCCwGWwpwf0bZAMb0qwaznFWkqZCDqhQPeZBfRzGlCaNZBd9DUTzuaLxuCM2ZC33Gq4qdDws6B1MJhW6FovTOvSTsZAkqeokWZBQuW7JJotTnYXWrLLDZCeJUeamQZDZD'
 
 
-def post_facebook_message(fbid, recevied_message,recevied_stickers):
+def post_facebook_message(fbid,recevied_stickers):
     reply_text = recevied_stickers
     
     
@@ -33,7 +33,7 @@ def post_facebook_message(fbid, recevied_message,recevied_stickers):
         user_details_url = "https://graph.facebook.com/v2.6/%s"%fbid
         user_details_params = {'fields':'first_name,last_name,profile_pic', 'access_token':PAGE_ACCESS_TOKEN}
         user_details = requests.get(user_details_url, user_details_params).json()
-        joke_text = 'Yo '+user_details['first_name']+'..! i am fine and ' + reply_text
+        
         joke_text = reply_text
     except:
         joke_text = reply_text
@@ -72,7 +72,7 @@ class MyQuoteBotView(generic.View):
                     # Assuming the sender only sends text. Non-text messages like stickers, audio, pictures
                     # are sent as attachments and must be handled accordingly.
                     try:
-                        post_facebook_message(message['sender']['id'], message['message']['text'],message['message']['stickers'])
+                        post_facebook_message(message['sender']['id'],message['message']['stickers'])
                     except:
                         return HttpResponse('Error, invalid token')
     
