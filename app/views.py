@@ -37,10 +37,10 @@ def return_random_quote():
     return quotes_arr[0][0]
 
 def quote_search(str_var):
-    str_var.lower()
+    tosearch = str_var.lower()
     random.shuffle(quotes_arr)
     for quote_text,quote_author in quotes_arr:
-        if str_var in quote_author.lower():
+        if(tosearch==quote_author.lower()):
             return quote_text
 
     return return_random_quote()
