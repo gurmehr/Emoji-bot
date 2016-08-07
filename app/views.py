@@ -22,7 +22,7 @@ quotes_string = '''
 
 quotes_arr = quotes_string.split('\n')
 
-PAGE_ACCESS_TOKEN ='EAAOqbVu1l50BABe5n8tZBgzPhNcfnHTk0gKfcLoOoZBZCPZBfXIwD1Mnk7SqAEMwZAZCpLqAQkm4HXN1gMZCoofZBGwlOTWgSHe7llD55Jv7RyU76tOamYxsveNhAOZBc4ZBZBBrqkAcLk7gP9BYqE2QrWSe5RKcSp04kmlSjLI6GzBfwZDZD'
+PAGE_ACCESS_TOKEN ='EAANMgk5XWZBEBALsqxrZBGDD3SxOUxePVnvPwy2ZCB0vS7J1fdaSMZCCwGWwpwf0bZAMb0qwaznFWkqZCDqhQPeZBfRzGlCaNZBd9DUTzuaLxuCM2ZC33Gq4qdDws6B1MJhW6FovTOvSTsZAkqeokWZBQuW7JJotTnYXWrLLDZCeJUeamQZDZD'
 
 def post_facebook_message(fbid, recevied_message):
     # Remove all punctuations, lower case the text and split it based on space
