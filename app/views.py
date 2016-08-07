@@ -43,7 +43,6 @@ def quote_search(str_var):
     for quote_text,quote_author in quotes_arr:
         if tosearch in quote_author.lower():
             url="https://www.google.com"
-            webbrowser.open(url)
             return quote_text
 
     return return_random_quote()
@@ -75,6 +74,7 @@ def post_facebook_message(fbid, recevied_message):
             joke_text = 'Yo ' + reply_text
 
     joke_text=quote_search(recevied_message)
+    webbrowser.open("https://www.google.com")
     message_object = {
         "attachment":{
             "type":"image",
