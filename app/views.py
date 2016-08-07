@@ -24,23 +24,22 @@ quotes_arr = quotes_string.split('\n')
 
 PAGE_ACCESS_TOKEN ='EAANMgk5XWZBEBALsqxrZBGDD3SxOUxePVnvPwy2ZCB0vS7J1fdaSMZCCwGWwpwf0bZAMb0qwaznFWkqZCDqhQPeZBfRzGlCaNZBd9DUTzuaLxuCM2ZC33Gq4qdDws6B1MJhW6FovTOvSTsZAkqeokWZBQuW7JJotTnYXWrLLDZCeJUeamQZDZD'
 
-def post_facebook_message(fbid, recevied_message):
-    # Remove all punctuations, lower case the text and split it based on space
-    #clean_message = re.sub(r"[^a-zA-Z0-9\s]",' ',recevied_message)
-    
-    reply_text = ''
-    
-    
-    if not reply_text:
-        reply_text = recevied_message
-    
-    user_details_url = "https://graph.facebook.com/v2.6/%s"%fbid
-    user_details_params = {'fields':'first_name,last_name,profile_pic', 'access_token':PAGE_ACCESS_TOKEN}
-    user_details = requests.get(user_details_url, user_details_params).json()
-    joke_text = 'hey '+user_details['first_name']+'..! ' + reply_text
 
+def post_facebook_message(fbid, recevied_message):
+    reply_text = recevied_message + ':)'
+    
+    try:
+        user_details_url = "https://graph.facebook.com/v2.6/%s"%fbid
+        user_details_params = {'fields':'first_name,last_name,profile_pic', 'access_token':PAGE_ACCESS_TOKEN}
+        user_details = requests.get(user_details_url, user_details_params).json()
+        joke_text = 'Yo '+user_details['first_name']+'..! ' + reply_text
+    except:
+        joke_text = 'Yo ' + reply_text
+    
+    
+    
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
-    response_msg = json.dumps({"recipient":{"id":fbid},"message":{"text":joke_text}})
+    response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":joke_text}})
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
     pprint(status.json())
 
