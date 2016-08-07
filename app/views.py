@@ -40,7 +40,7 @@ def quote_search(str_var):
     tosearch = str_var.lower()
     random.shuffle(quotes_arr)
     for quote_text,quote_author in quotes_arr:
-        if(tosearch==quote_author.lower()):
+        if tosearch in quote_author.lower():
             return quote_text
 
     return return_random_quote()
