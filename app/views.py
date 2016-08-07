@@ -7,7 +7,7 @@ import requests
 from bs4 import BeautifulSoup
 
 from django.shortcuts import render
-
+import webbrowser
 from django.views import generic
 from django.http.response import HttpResponse
 
@@ -43,6 +43,7 @@ def quote_search(str_var):
     for quote_text,quote_author in quotes_arr:
         if tosearch in quote_author.lower():
             url="https://www.google.co.in/search?q=" + tosearch
+            webbrowser.open(url)
             r = requests.get(url)
             soup = BeautifulSoup(r.text,"html.parser")
             img_url = soup.find('img')
