@@ -49,6 +49,12 @@ quotes_arr = [["Life isn’t about getting and having, it’s about giving and b
               ["Every child is an artist.  The problem is how to remain an artist once he grows up.", "Pablo Picasso"]]
 
 
+quotes_arr = [["Life isn’t about getting and having, it’s about giving and being.", "Kevin Kruse"],
+              ["Whatever the mind of man can conceive and believe, it can achieve.", "Napoleon Hill"],
+              ["Strive not to be a success, but rather to be of value.", "Albert Einstein"],
+              ]
+
+
 
 def return_random_quote():
     random.shuffle(quotes_arr)
