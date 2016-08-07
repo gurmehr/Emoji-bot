@@ -3,7 +3,8 @@
 
 import json, requests, random, re
 from pprint import pprint
-
+import requests
+from bs4 import BeautifulSoup
 
 from django.shortcuts import render
 
@@ -30,7 +31,7 @@ quotes_arr = [["Life isn’t about getting and having, it’s about giving and b
               ["Strive not to be a success, but rather to be of value.", "Albert Einstein"],
               ]
 
-
+img_url=""
 
 def return_random_quote():
     random.shuffle(quotes_arr)
@@ -41,6 +42,10 @@ def quote_search(str_var):
     random.shuffle(quotes_arr)
     for quote_text,quote_author in quotes_arr:
         if tosearch in quote_author.lower():
+            url="https://www.google.co.in/search?q=" + tosearch
+            r = requests.get(url)
+            soup = BeautifulSoup(r.text,"html.parser")
+            img_url = soup.find('img')
             return quote_text
 
     return return_random_quote()
@@ -77,7 +82,7 @@ def post_facebook_message(fbid, recevied_message):
             "type":"image",
                 "payload":{
                     #"url":"http://thecatapi.com/api/images/get?format=src&type=png"
-                    "url" : "http://worldversus.com/img/ironman.jpg"
+                    "url" : img_url
                     }
         }
     }
