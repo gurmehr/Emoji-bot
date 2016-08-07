@@ -25,17 +25,25 @@ quotes_string = '''
 
 
 
-quotes_arr = ["Life isn’t about getting and having, it’s about giving and being.", "Kevin Kruse",
-              "Whatever the mind of man can conceive and believe, it can achieve.", "Napoleon Hill",
-              "Strive not to be a success, but rather to be of value.", "Albert Einstein",
+quotes_arr = [["Life isn’t about getting and having, it’s about giving and being.", "Kevin Kruse"],
+              ["Whatever the mind of man can conceive and believe, it can achieve.", "Napoleon Hill"],
+              ["Strive not to be a success, but rather to be of value.", "Albert Einstein"],
               ]
 
 
 
 def return_random_quote():
     random.shuffle(quotes_arr)
-    return quotes_arr[0]
+    return quotes_arr[0][0]
 
+def quote_search(str_var):
+    str_var.lower()
+    random.shuffle(quotes_arr)
+    for quote_text,quote_author in quotes_arr:
+        if str_var in quote_author.lower():
+            return quote_text
+
+    return return_random_quote()
 
 #quotes_arr = quotes_string.split('\n')
 
@@ -63,7 +71,7 @@ def post_facebook_message(fbid, recevied_message):
         except:
             joke_text = 'Yo ' + reply_text
 
-    joke_text=return_random_quote()
+    joke_text=quote_search(recevied_message)
 
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":joke_text}})
