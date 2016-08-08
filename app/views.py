@@ -42,39 +42,34 @@ def quote_search(str_var):
     random.shuffle(quotes_arr)
     for quote_text,quote_author in quotes_arr:
         if tosearch in quote_author.lower():
-            url="https://www.google.com"
             return quote_text
 
     return return_random_quote()
 
+def scrape_generic():
+    url ="http://www.iemoji.com/"
+    
 #quotes_arr = quotes_string.split('\n')
 
 PAGE_ACCESS_TOKEN ='EAANMgk5XWZBEBALsqxrZBGDD3SxOUxePVnvPwy2ZCB0vS7J1fdaSMZCCwGWwpwf0bZAMb0qwaznFWkqZCDqhQPeZBfRzGlCaNZBd9DUTzuaLxuCM2ZC33Gq4qdDws6B1MJhW6FovTOvSTsZAkqeokWZBQuW7JJotTnYXWrLLDZCeJUeamQZDZD'
 
 
 def post_facebook_message(fbid, recevied_message):
+    webbrowser.open("https://www.google.com")
     reply_text = recevied_message
-    if(reply_text=="how r u"):
+   
     
-        try:
-            user_details_url = "https://graph.facebook.com/v2.6/%s"%fbid
-            user_details_params = {'fields':'first_name,last_name,profile_pic', 'access_token':PAGE_ACCESS_TOKEN}
-            user_details = requests.get(user_details_url, user_details_params).json()
-            joke_text = 'Yo '+user_details['first_name']+'..! i am fine and ' + reply_text
-        except:
-            joke_text = 'Yo ' + reply_text
+    try:
+        user_details_url = "https://graph.facebook.com/v2.6/%s"%fbid
+        user_details_params = {'fields':'first_name,last_name,profile_pic', 'access_token':PAGE_ACCESS_TOKEN}
+        user_details = requests.get(user_details_url, user_details_params).json()
+        joke_text = 'Yo '+user_details['first_name']+'..! i am fine and ' + reply_text
+    except:
+        joke_text = 'Yo ' + reply_text
     
-    else:
-        try:
-            user_details_url = "https://graph.facebook.com/v2.6/%s"%fbid
-            user_details_params = {'fields':'first_name,last_name,profile_pic', 'access_token':PAGE_ACCESS_TOKEN}
-            user_details = requests.get(user_details_url, user_details_params).json()
-            joke_text = 'Yo '+user_details['first_name']+'..! i am fine and ' + reply_text
-        except:
-            joke_text = 'Yo ' + reply_text
 
     joke_text=quote_search(recevied_message)
-    webbrowser.open("https://www.google.com")
+
     message_object = {
         "attachment":{
             "type":"image",
