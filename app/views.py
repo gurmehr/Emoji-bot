@@ -55,7 +55,7 @@ PAGE_ACCESS_TOKEN ='EAANMgk5XWZBEBALsqxrZBGDD3SxOUxePVnvPwy2ZCB0vS7J1fdaSMZCCwGW
 
 
 def post_facebook_message(fbid, recevied_message):
-    webbrowser.open("https://www.google.com")
+    print("hello")
     reply_text = recevied_message
    
     
