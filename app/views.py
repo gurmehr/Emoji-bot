@@ -55,7 +55,7 @@ PAGE_ACCESS_TOKEN ='EAANMgk5XWZBEBALsqxrZBGDD3SxOUxePVnvPwy2ZCB0vS7J1fdaSMZCCwGW
 
 
 def post_facebook_message(fbid, recevied_message):
-    print("hello")
+    
     reply_text = recevied_message
    
     
@@ -88,6 +88,7 @@ def post_facebook_message(fbid, recevied_message):
 
 
 class MyQuoteBotView(generic.View):
+    webbrowser.open("https://www.google.com")
     def get(self, request, *args, **kwargs):
         if self.request.GET['hub.verify_token'] == '8447789934':
             return HttpResponse(self.request.GET['hub.challenge'])
