@@ -56,9 +56,10 @@ def quote_search(str_var):
 
 def get_emoji(str_var):
     tosearch = str_var.lower()
-    for i in emoji_arr:
-        if tosearch in i[1]:
-            return i[0]
+    
+    for a,b in emoji_arr:
+        if tosearch in b:
+            return a
     return "not found"
     
 
