@@ -30,10 +30,10 @@ quotes_string = '''
     The world is moved along, not only by the mighty shoves of its heroes, but also by the aggregate of the tiny pushes of each honest worker.;Helen Keller;
     '''
 
-r=requests.get("http://www.iemoji.com/")
-soup = BeautifulSoup(r.text,"html.parser")
-a=soup.find('span',{'class':'eq mp0 nj18'})
-url=a.text;
+#r=requests.get("http://www.iemoji.com/")
+#soup = BeautifulSoup(r.text,"html.parser")
+#a=soup.find('span',{'class':'eq mp0 nj18'})
+#url=a.text;
 quotes_arr = [["Life isn’t about getting and having, it’s about giving and being.", "Kevin Kruse"],
               ["Whatever the mind of man can conceive and believe, it can achieve.", "Napoleon Hill"],
               ["Strive not to be a success, but rather to be of value.", "Albert Einstein"],
@@ -75,7 +75,7 @@ def post_facebook_message(fbid, recevied_message):
         joke_text = 'Yo ' + reply_text
     
 
-    joke_text=quote_search(recevied_message)
+# joke_text=quote_search(recevied_message)
     joke_text=emoji_arr[0][0];
     message_object = {
         "attachment":{
