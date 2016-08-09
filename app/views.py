@@ -53,11 +53,12 @@ def quote_search(str_var):
             return quote_text
 
     return return_random_quote()
-arr=[]
-flag=0;
+
+
 def get_emoji(str_var):
     tosearch = str_var.lower()
-    
+    arr=[]
+    flag=0;
     for a,b in emoji_arr:
         if tosearch in b.lower():
             arr.append(a)
