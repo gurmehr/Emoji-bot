@@ -125,6 +125,7 @@ def post_facebook_message(fbid, recevied_message):
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     
     if(begin==0):
+        begin=1
         intro="Hello "+user_details['first_name']+",This is a Emoji finder Chat-Bot."
         response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":intro}})
         status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
