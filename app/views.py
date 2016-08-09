@@ -63,7 +63,7 @@ def get_emoji(str_var):
             arr.append(a)
             flag=1;
     if flag == 1:
-        return arr
+        return " ".join(result_arr[:5])
     return "not found"
     
 
