@@ -54,7 +54,12 @@ def quote_search(str_var):
 
     return return_random_quote()
 
-
+def get_emoji(str_var):
+    tosearch = str_var.lower()
+    for i in emoji_arr:
+        if tosearch in i[1]:
+            return i[0]
+    return "not found"
     
 
 
@@ -76,7 +81,7 @@ def post_facebook_message(fbid, recevied_message):
     
 
 # joke_text=quote_search(recevied_message)
-    joke_text=emoji_arr[0][0];
+    joke_text=get_emoji(recevied_message)
     message_object = {
         "attachment":{
             "type":"image",
