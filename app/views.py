@@ -19,7 +19,7 @@ emoji_arr = [["😄", "Smiling Face with Open Mouth and Smiling Eyes"], ["😃",
 
 
 
-
+emoji_arr=[]
 
 
 quotes_string = '''
