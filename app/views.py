@@ -29,22 +29,23 @@ quotes_string = '''
     One often meets his destiny on the road he takes to avoid it.;Kung Fu Panda;
     The world is moved along, not only by the mighty shoves of its heroes, but also by the aggregate of the tiny pushes of each honest worker.;Helen Keller;
     '''
-
-r=requests.get("http://emojipedia.org/flags/")
-soup = BeautifulSoup(r.text,"html.parser")
-p=soup.find('ul',{'class':'emoji-list'})
-list_flags=p.find_all('li')
-flags_list=[]
-flags_name=[]
-for list in list_flags:
-    flags_list.append(list.find('span').text)
-    flags_name.append(list.text)
-final_list=[]
-k=0
-for i in flags_list:
-    a=[flags_list[k],flags_name[k]]
-    k=k+1
-    emoji_arr.append(a)
+bigdata_list=['http://emojipedia.org/food-drink/','http://emojipedia.org/flags/','http://emojipedia.org/nature/','http://emojipedia.org/activity/','http://emojipedia.org/travel-places/','http://emojipedia.org/objects/','http://emojipedia.org/people/']
+for start in bigdata_list:
+    r=requests.get(start)
+    soup = BeautifulSoup(r.text,"html.parser")
+    p=soup.find('ul',{'class':'emoji-list'})
+    list_flags=p.find_all('li')
+    flags_list=[]
+    flags_name=[]
+    for list in list_flags:
+        flags_list.append(list.find('span').text)
+        flags_name.append(list.text)
+    final_list=[]
+    k=0
+    for i in flags_list:
+        a=[flags_list[k],flags_name[k]]
+        k=k+1
+        emoji_arr.append(a)
 
 
 
