@@ -58,11 +58,13 @@ def quote_search(str_var):
 def get_emoji(str_var):
     flag=0
     arr=[]
+    try0=[['smile','smiling'],['sad','disappointed']]
     k=str_var.split(',')
     for i in k:
         tosearch = i.lower()
-        if(tosearch == "smile"):
-            return "try smiling"
+        for try1,try2 in try0:
+            if(tosearch in try1):
+                return "Sir try :"+try2
         for a,b in emoji_arr:
             if tosearch in b.lower():
                 arr.append(a)
@@ -110,7 +112,7 @@ def post_facebook_message(fbid, recevied_message):
 
 
 class MyQuoteBotView(generic.View):
-    webbrowser.open("https://www.google.com")
+    
     def get(self, request, *args, **kwargs):
         if self.request.GET['hub.verify_token'] == '8447789934':
             return HttpResponse(self.request.GET['hub.challenge'])
