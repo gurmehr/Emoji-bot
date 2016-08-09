@@ -74,7 +74,7 @@ def quote_search(str_var):
 def get_emoji(str_var):
     flag=0
     arr=[]
-    arr[0]="emojis"
+    arr.append("emojis")
     try0=[['smile','smiling'],['sad','disappointed'],['shocked','flushed']]
     k=str_var.split(',')
     for i in k:
