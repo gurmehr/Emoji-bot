@@ -74,6 +74,7 @@ def quote_search(str_var):
 def get_emoji(str_var):
     flag=0
     arr=[]
+    arr[0]="emojis"
     try0=[['smile','smiling'],['sad','disappointed'],['shocked','flushed']]
     k=str_var.split(',')
     for i in k:
@@ -85,8 +86,9 @@ def get_emoji(str_var):
             if tosearch in b.lower():
                 arr.append(a)
                 flag=1;
+
     if flag == 1:
-        return " ".join(arr[0])
+        return " ".join(arr[:5])
     return "not found"
     
 
