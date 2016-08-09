@@ -58,7 +58,7 @@ def get_emoji(str_var):
     tosearch = str_var.lower()
     
     for a,b in emoji_arr:
-        if tosearch in b:
+        if tosearch in b.lower():
             return a
     return "not found"
     
