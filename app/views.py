@@ -92,7 +92,9 @@ def get_emoji(str_var):
     k=str_var.split(' ')
     for i in k:
         if(i.lower() in "gand,gandu,sex,nude,porn,fuck,fuck,dick,lund,suck,cock,ass,pussy,tit,tits,chood,mc,bc,sucker".split(',')):
-        return "Hey asshole,mind your language!!!!"
+            return "Hey asshole,mind your language!!!!"
+        if(i.lower() in "help,rules,?,hi,hello,wassup,hey,howdy,hola".split(',')):
+            return "intro"
         tosearch = i.lower()
         for try1,try2 in try0:
             if(tosearch in try1):
@@ -128,7 +130,8 @@ def post_facebook_message(fbid, recevied_message):
 
 # joke_text=quote_search(recevied_message)
     joke_text=get_emoji(recevied_message)
-    
+    if joke_text=="intro":
+        joke_text="Hello " +user_details['first_name'] + ",this is a chatbot created to help you find emojis.Just send a text and i will search an emoji that matches it."
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     
     response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":joke_text}})
