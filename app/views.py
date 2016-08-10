@@ -21,7 +21,7 @@ begin=0;
 
 emoji_arr=[]
 
-
+img_arr=[]
 quotes_string = '''
     There is no charge for awesomeness... or attractiveness.;Kung Fu Panda;http://www.google.co.in/search?ie=UTF-8&q=kung+fu+panda+awesomeness
     Any fool can write code that a computer can understand. Good programmers write code that humans can understand.;Martin Fowle;http://thc.org/root/phun/unmaintain.html
@@ -30,6 +30,14 @@ quotes_string = '''
     The world is moved along, not only by the mighty shoves of its heroes, but also by the aggregate of the tiny pushes of each honest worker.;Helen Keller;
     '''
 bigdata_list=['http://emojipedia.org/food-drink/','http://emojipedia.org/nature/','http://emojipedia.org/activity/','http://emojipedia.org/travel-places/','http://emojipedia.org/objects/','http://emojipedia.org/people/','http://emojipedia.org/flags/']
+r1=requests.get("http://emojipedia.org/facebook/messenger/")
+soup1 = BeautifulSoup(r1.text,"html.parser")
+p1=soup1.find('ul',{'class':'emoji-grid'})
+list_fb=p1.find_all('img')
+for l in list_fb:
+    a=[l.get('src'),l.get('alt')]
+    img_arr.append(a)
+
 for start in bigdata_list:
     r=requests.get(start)
     soup = BeautifulSoup(r.text,"html.parser")
@@ -85,7 +93,7 @@ def get_emoji(str_var):
         for try1,try2 in try0:
             if(tosearch in try1):
                 return "Sir try "+try2
-        for a,b in emoji_arr:
+        for a,b in img_arr:
             if tosearch in b.lower():
                 arr.append(a)
                 flag=1;
