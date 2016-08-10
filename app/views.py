@@ -93,13 +93,13 @@ def get_emoji(str_var):
         for try1,try2 in try0:
             if(tosearch in try1):
                 return "Sir try "+try2
-        for a,b in img_arr:
+        for a,b in emoji_arr:
             if tosearch in b.lower():
-                return a
-                #arr.append(a)
+                arr.append(a)
                 flag=1;
-            #if flag == 1:
-#return " ".join(arr[:5])
+
+    if flag == 1:
+        return " ".join(arr[:10])
     return "not found"
     
 
@@ -129,16 +129,16 @@ def post_facebook_message(fbid, recevied_message):
             "type":"image",
                 "payload":{
                     #"url":"http://thecatapi.com/api/images/get?format=src&type=png"
-                    "url" : joke_text
+                    "url" : "http://worldversus.com/img/ironman.jpg"
                     }
         }
     }
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     
-#response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":joke_text}})
-    response_msg2 = json.dumps({"recipient":{"id":fbid}, "message":message_object})
-#status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
-    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg2)
+    response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":joke_text}})
+#response_msg2 = json.dumps({"recipient":{"id":fbid}, "message":message_object})
+    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
+# status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg2)
     pprint(status.json())
 
 
