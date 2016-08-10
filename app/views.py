@@ -29,7 +29,7 @@ quotes_string = '''
     One often meets his destiny on the road he takes to avoid it.;Kung Fu Panda;
     The world is moved along, not only by the mighty shoves of its heroes, but also by the aggregate of the tiny pushes of each honest worker.;Helen Keller;
     '''
-bigdata_list=['http://emojipedia.org/food-drink/','http://emojipedia.org/flags/','http://emojipedia.org/nature/','http://emojipedia.org/activity/','http://emojipedia.org/travel-places/','http://emojipedia.org/objects/','http://emojipedia.org/people/']
+bigdata_list=['http://emojipedia.org/food-drink/','http://emojipedia.org/nature/','http://emojipedia.org/activity/','http://emojipedia.org/travel-places/','http://emojipedia.org/objects/','http://emojipedia.org/people/','http://emojipedia.org/flags/']
 for start in bigdata_list:
     r=requests.get(start)
     soup = BeautifulSoup(r.text,"html.parser")
