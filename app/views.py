@@ -124,17 +124,20 @@ def post_facebook_message(fbid, recevied_message):
 
 # joke_text=quote_search(recevied_message)
     joke_text=get_emoji(recevied_message)
-    if(joke_text=="not found")
-    
-    message_object = {
-        "error": {
-            "message": "No matching emoji found.",
-            "type": "OAuthException",
-            "code": 100,
-            "fbtrace_id": "BLBz/WZt8dN"
-            }
+    if(joke_text=="not found"):
+        message_object = {
+            "error":{
+                "message": "No matching emoji found.",
+                "type": "OAuthException",
+                "code": 100,
+                "fbtrace_id": "BLBz/WZt8dN"
+                    }
 
-    }
+                }
+        response_msg2 = json.dumps({"recipient":{"id":fbid}, "message":message_object})
+        status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg2)
+        pprint(status.json())
+        return
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     
     response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":joke_text}})
