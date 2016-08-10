@@ -82,11 +82,15 @@ def quote_search(str_var):
 def get_emoji(str_var):
     flag=0
     arr=[]
+    if(str_var.lower() in "gand,gandu,sex,nude,porn,fuck,dick,lund,suck,cock,ass,pussy,tit,tits,chood,mc,bc,sucker".split(',')):
+        return "Hey asshole,mind your language!!!!"
+    
     if str_var.lower() in "*,random,anything":
         random.shuffle(emoji_arr)
         return emoji_arr[0][0]
     arr.append("")
     try0=[['smile','smiling'],['sad','disappointed'],['shocked','flushed'],['potty','poo'],['tatti','poo']]
+    
     k=str_var.split(' ')
     for i in k:
         tosearch = i.lower()
