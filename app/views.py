@@ -74,14 +74,17 @@ def quote_search(str_var):
 def get_emoji(str_var):
     flag=0
     arr=[]
-    arr.append("emojis")
-    try0=[['smile','smiling'],['sad','disappointed'],['shocked','flushed']]
-    k=str_var.split(',')
+    if str_var.lower() in "*,random,anything":
+        random.shuffle(emoji_arr)
+        return emoji_arr[0][0]
+    arr.append("Here you go - ")
+    try0=[['smile','smiling'],['sad','disappointed'],['shocked','flushed'],['potty','poo'],['tatti','poo']]
+    k=str_var.split(' ')
     for i in k:
         tosearch = i.lower()
         for try1,try2 in try0:
             if(tosearch in try1):
-                return "Sir try :"+try2
+                return "Sir try "+try2
         for a,b in emoji_arr:
             if tosearch in b.lower():
                 arr.append(a)
@@ -124,17 +127,6 @@ def post_facebook_message(fbid, recevied_message):
     }
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     
-    #if(begin==0):
-    #begin=1
-    #intro="Hello "+user_details['first_name']+",This is a Emoji finder Chat-Bot."
-    #response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":intro}})
-    #status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
-    #intro="How to use:Send any text(ex:heart) and wait for the bot to reply with the Emoji you need ie (😍 😻 💑 👨‍❤️‍👨)."
-    #response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":intro}})
-    #status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
-    #intro="Please share this with your friends 😃.Thank You"
-    #response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":intro}})
-    #status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
     response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":joke_text}})
 #response_msg2 = json.dumps({"recipient":{"id":fbid}, "message":message_object})
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
