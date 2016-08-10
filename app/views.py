@@ -29,7 +29,7 @@ quotes_string = '''
     One often meets his destiny on the road he takes to avoid it.;Kung Fu Panda;
     The world is moved along, not only by the mighty shoves of its heroes, but also by the aggregate of the tiny pushes of each honest worker.;Helen Keller;
     '''
-bigdata_list=['http://emojipedia.org/food-drink/','http://emojipedia.org/nature/','http://emojipedia.org/activity/','http://emojipedia.org/travel-places/','http://emojipedia.org/objects/','http://emojipedia.org/people/','http://emojipedia.org/flags/']
+bigdata_list=['http://emojipedia.org/people/','http://emojipedia.org/food-drink/','http://emojipedia.org/nature/','http://emojipedia.org/activity/','http://emojipedia.org/travel-places/','http://emojipedia.org/objects/','http://emojipedia.org/flags/','http://emojipedia.org/birthday/']
 r1=requests.get("http://emojipedia.org/facebook/messenger/")
 soup1 = BeautifulSoup(r1.text,"html.parser")
 p1=soup1.find('ul',{'class':'emoji-grid'})
@@ -124,14 +124,16 @@ def post_facebook_message(fbid, recevied_message):
 
 # joke_text=quote_search(recevied_message)
     joke_text=get_emoji(recevied_message)
+    if(joke_text=="not found")
+    
     message_object = {
-        "attachment":{
-            "type":"image",
-                "payload":{
-                    #"url":"http://thecatapi.com/api/images/get?format=src&type=png"
-                    "url" : "http://worldversus.com/img/ironman.jpg"
-                    }
-        }
+        "error": {
+            "message": "No matching emoji found.",
+            "type": "OAuthException",
+            "code": 100,
+            "fbtrace_id": "BLBz/WZt8dN"
+            }
+
     }
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     
