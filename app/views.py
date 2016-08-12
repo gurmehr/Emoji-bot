@@ -86,7 +86,7 @@ def get_emoji(str_var):
     if str_var.lower() in "*,random,anything":
         random.shuffle(emoji_arr)
         return emoji_arr[0][0]
-    arr.append("")
+    arr.append("Emojis:")
     try0=[['smile','smiling'],['sad','disappointed'],['shocked','flushed'],['potty','poo'],['tatti','poo']]
     
     k=str_var.split(' ')
@@ -141,13 +141,8 @@ def post_facebook_message(fbid, recevied_message):
                 "text":joke_text,
                 "buttons":[
                            {
-                           "type":"web_url",
-                           "url":"https://www.google.com",
-                           "title":"Show Website"
-                           },
-                           {
                            "type":"postback",
-                           "title":"Start Chatting",
+                           "title":"Copy",
                            "payload":"USER_DEFINED_PAYLOAD"
                            }
                            ]
