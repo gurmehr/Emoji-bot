@@ -133,8 +133,28 @@ def post_facebook_message(fbid, recevied_message):
     if joke_text=="intro":
         joke_text="Hello " +user_details['first_name'] + ",this is a chatbot created to help you find emojis.Just send a text and i will search an emoji that matches it."
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
-    
-    response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":joke_text}})
+    message_object = {
+        "attachment":{
+            "type":"template",
+            "payload":{
+                "template_type":"button",
+                "text":joke_text,
+                "buttons":[
+                           {
+                           "type":"web_url",
+                           "url":"https://www.google.com",
+                           "title":"Show Website"
+                           },
+                           {
+                           "type":"postback",
+                           "title":"Start Chatting",
+                           "payload":"USER_DEFINED_PAYLOAD"
+                           }
+                           ]
+            }
+    }
+    }
+    response_msg = json.dumps({"recipient":{"id":fbid}, "message":message_object})
 #response_msg2 = json.dumps({"recipient":{"id":fbid}, "message":message_object})
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
 # status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg2)
