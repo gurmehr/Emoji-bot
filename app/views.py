@@ -138,14 +138,7 @@ def post_facebook_message(fbid, recevied_message):
             "payload":{
                 "template_type":"button",
                 "text":joke_text,
-                "buttons":[
-                           {
-                           "type":"postback",
-                           "title":"Copy",
-                           "payload":"USER_DEFINED_PAYLOAD"
-                           }
-                           ]
-            }
+                            }
     }
     }
     message_object2 = {
