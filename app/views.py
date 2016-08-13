@@ -208,11 +208,11 @@ class MyQuoteBotView(generic.View):
                     try:
                         post_facebook_message2(message['sender']['id'], str(message['message']['attachments'][0]['payload']['url']))
                     except:
-                        return HttpResponse('Error, invalid token')
+                        post_facebook_message(message['sender']['id'], "oops1")
                     try:
                         post_facebook_message(message['sender']['id'], message['message']['text'])
                     except:
-                        return HttpResponse('Error, invalid token')
+                        post_facebook_message(message['sender']['id'], "oops2")
     
         return HttpResponse()
 
