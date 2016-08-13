@@ -111,7 +111,7 @@ def get_emoji(str_var):
 
 PAGE_ACCESS_TOKEN ='EAANMgk5XWZBEBALsqxrZBGDD3SxOUxePVnvPwy2ZCB0vS7J1fdaSMZCCwGWwpwf0bZAMb0qwaznFWkqZCDqhQPeZBfRzGlCaNZBd9DUTzuaLxuCM2ZC33Gq4qdDws6B1MJhW6FovTOvSTsZAkqeokWZBQuW7JJotTnYXWrLLDZCeJUeamQZDZD'
 def post_facebook_message2(fbid, recevied_message):
-
+    post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     message_object = {
         "attachment":{
             "type":"image",
@@ -206,7 +206,7 @@ class MyQuoteBotView(generic.View):
                     # Assuming the sender only sends text. Non-text messages like stickers, audio, pictures
                     # are sent as attachments and must be handled accordingly.
                     try:
-                        post_facebook_message2(message['sender']['id'], message['message']['attachments']['payload']['url'])
+                        post_facebook_message2(message['sender']['id'], str(message['message']['attachments'][0]['payload']['url']))
                     except:
                         return HttpResponse('Error, invalid token')
     
