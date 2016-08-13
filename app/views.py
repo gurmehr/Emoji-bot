@@ -196,8 +196,8 @@ class MyQuoteBotView(generic.View):
                     #try:
                     if message['message']['text']:
                         post_facebook_message(message['sender']['id'], message['message']['text'])
-                    '''except:
-                        return HttpResponse('Error, invalid token')'''
+                    else:
+                        return HttpResponse('Error, invalid token')
     
         return HttpResponse()
 
