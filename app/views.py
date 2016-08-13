@@ -116,7 +116,7 @@ def post_facebook_message2(fbid, recevied_message):
         "attachment":{
             "type":"image",
                 "payload":{
-                    "url":"https://upload.wikimedia.org/wikipedia/commons/d/d3/Albert_Einstein_Head.jpg"
+                    "url":recevied_message
                         }
                         }
                 }
