@@ -208,11 +208,11 @@ class MyQuoteBotView(generic.View):
                     try:
                         post_facebook_message2(message['sender']['id'], str(message['message']['attachments'][0]['payload']['url']))
                     except:
-                        post_facebook_message(message['sender']['id'], "oops1")
+                        return HttpResponse("oops")
                     try:
                         post_facebook_message(message['sender']['id'], message['message']['text'])
                     except:
-                        post_facebook_message(message['sender']['id'], "oops2")
+                        return HttpResponse("oops")
     
         return HttpResponse()
 
