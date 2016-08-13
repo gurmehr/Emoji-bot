@@ -193,10 +193,9 @@ class MyQuoteBotView(generic.View):
                     pprint(message)
                     # Assuming the sender only sends text. Non-text messages like stickers, audio, pictures
                     # are sent as attachments and must be handled accordingly.
-                    #try:
-                    if message['message']['text']:
+                    try:
                         post_facebook_message(message['sender']['id'], message['message']['text'])
-                    else:
+                    except:
                         return HttpResponse('Error, invalid token')
     
         return HttpResponse()
