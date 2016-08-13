@@ -55,7 +55,7 @@ for start in bigdata_list:
         k=k+1
         emoji_arr.append(a)
 
-
+pprint(emoji_arr[0][0])
 
 #url=a.text;
 quotes_arr = [["Life isn’t about getting and having, it’s about giving and being.", "Kevin Kruse"],
@@ -91,8 +91,7 @@ def get_emoji(str_var):
     
     k=str_var.split(' ')
     for i in k:
-        if(i.lower() in "gand,gandu,sex,nude,porn,fuck,fuck,dick,lund,suck,cock,ass,pussy,tit,tits,chood,mc,bc,sucker".split(',')):
-            return "Hey asshole,mind your language!!!!"
+        
         if(i.lower() in "help,rules,?,hi,hello,wassup,hey,howdy,hola".split(',')):
             return "intro"
         tosearch = i.lower()
@@ -105,7 +104,7 @@ def get_emoji(str_var):
                 flag=1;
 
     if flag == 1:
-        return arr[0]
+        return " ".join(arr[:5])
     return "Sorry not found!!!"
     
 
