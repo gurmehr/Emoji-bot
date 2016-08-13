@@ -172,7 +172,7 @@ def post_facebook_message(fbid, recevied_message):
     response_msg2 = json.dumps({"recipient":{"id":fbid}, "message":message_object2})
 #response_msg2 = json.dumps({"recipient":{"id":fbid}, "message":message_object})
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
-    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg2)
+    '''status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg2)'''
 # status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg2)
     pprint(status.json())
 
@@ -207,6 +207,10 @@ class MyQuoteBotView(generic.View):
                     # are sent as attachments and must be handled accordingly.
                     try:
                         post_facebook_message2(message['sender']['id'], str(message['message']['attachments'][0]['payload']['url']))
+                    except:
+                        return HttpResponse('Error, invalid token')
+                    try:
+                        post_facebook_message(message['sender']['id'], str(message['message']['text]))
                     except:
                         return HttpResponse('Error, invalid token')
     
