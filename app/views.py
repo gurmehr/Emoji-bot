@@ -155,7 +155,7 @@ def post_facebook_message(fbid, recevied_message):
                 "url":"https://upload.wikimedia.org/wikipedia/commons/d/d3/Albert_Einstein_Head.jpg"
         }
     }
-    }   
+    }
     response_msg = json.dumps({"recipient":{"id":fbid}, "message":message_object})
     response_msg2 = json.dumps({"recipient":{"id":fbid}, "message":message_object2})
 #response_msg2 = json.dumps({"recipient":{"id":fbid}, "message":message_object})
@@ -193,10 +193,11 @@ class MyQuoteBotView(generic.View):
                     pprint(message)
                     # Assuming the sender only sends text. Non-text messages like stickers, audio, pictures
                     # are sent as attachments and must be handled accordingly.
-                    try:
+                    #try:
+                    if message['text']:
                         post_facebook_message(message['sender']['id'], message['message']['text'])
-                    except:
-                        return HttpResponse('Error, invalid token')
+                    '''except:
+                        return HttpResponse('Error, invalid token')'''
     
         return HttpResponse()
 
