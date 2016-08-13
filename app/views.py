@@ -110,6 +110,18 @@ def get_emoji(str_var):
 
 
 PAGE_ACCESS_TOKEN ='EAANMgk5XWZBEBALsqxrZBGDD3SxOUxePVnvPwy2ZCB0vS7J1fdaSMZCCwGWwpwf0bZAMb0qwaznFWkqZCDqhQPeZBfRzGlCaNZBd9DUTzuaLxuCM2ZC33Gq4qdDws6B1MJhW6FovTOvSTsZAkqeokWZBQuW7JJotTnYXWrLLDZCeJUeamQZDZD'
+def post_facebook_message2(fbid, recevied_message):
+
+    message_object = {
+        "attachment":{
+            "type":"image",
+                "payload":{
+                    "url":"https://upload.wikimedia.org/wikipedia/commons/d/d3/Albert_Einstein_Head.jpg"
+                        }
+                        }
+                }
+    response_msg = json.dumps({"recipient":{"id":fbid}, "message":message_object})
+    status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
 
 
 def post_facebook_message(fbid, recevied_message):
@@ -138,7 +150,14 @@ def post_facebook_message(fbid, recevied_message):
             "payload":{
                 "template_type":"button",
                 "text":joke_text,
-                            }
+                "buttons":[
+                           {
+                           "type":"postback",
+                           "title":"Copy",
+                           "payload":"USER_DEFINED_PAYLOAD"
+                           }
+                           ]
+            }
     }
     }
     message_object2 = {
@@ -187,7 +206,7 @@ class MyQuoteBotView(generic.View):
                     # Assuming the sender only sends text. Non-text messages like stickers, audio, pictures
                     # are sent as attachments and must be handled accordingly.
                     try:
-                        post_facebook_message(message['sender']['id'], message['message']['text'])
+                        post_facebook_message2(message['sender']['id'], message['message']['attachments']['payload']['url'])
                     except:
                         return HttpResponse('Error, invalid token')
     
