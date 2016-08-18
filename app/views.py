@@ -103,7 +103,10 @@ def get_emoji(str_var):
                 flag=1;
 
     if flag == 1:
-        return ",".join(arr[:5])
+        if len(arr)==1:
+            return "'"+arr[0]+"'"
+        else:
+            return ",".join(arr[:5])
     return "Sorry not found!!!"
     
 
