@@ -93,6 +93,8 @@ def get_emoji(str_var):
         
         if(i.lower() in "help,rules,?,hi,hello,wassup,hey,howdy,hola".split(',')):
             return "intro"
+        if(i.lower() in "gand,gandu,sex,nude,porn,fuck,fuck,dick,lund,suck,cock,ass,pussy,tit,tits,chood,mc,bc,sucker".split(',')):
+            return "Hey asshole,mind your language!!!!"
         tosearch = i.lower()
         for try1,try2 in try0:
             if(tosearch in try1):
