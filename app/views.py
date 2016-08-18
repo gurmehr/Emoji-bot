@@ -104,8 +104,9 @@ def get_emoji(str_var):
                 flag=1;
 
     if flag == 1:
-        arr.append("'")
-        return " ".join(arr[:5])
+        final_emojis=" ".join(arr[:5])
+        final_emojis.append("'")
+        return final_emojis
     return "Sorry not found!!!"
     
 
@@ -210,11 +211,7 @@ class MyQuoteBotView(generic.View):
                         post_facebook_message(message['sender']['id'], message['message']['text'])
                     except:
                         return HttpResponse("oops")
-                    try:
-                        post_facebook_message2(message['sender']['id'], str(message['message']['attachments'][0]['payload']['url']))
-                    except:
-                        return HttpResponse("oops")
-    
+        
         return HttpResponse()
 
 
