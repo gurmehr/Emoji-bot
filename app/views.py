@@ -86,7 +86,7 @@ def get_emoji(str_var):
     if str_var.lower() in "*,random,anything":
         random.shuffle(emoji_arr)
         return emoji_arr[0][0]
-    arr.append(" ")
+    arr.append("'")
     try0=[['smile','smiling'],['sad','disappointed'],['shocked','flushed'],['potty','poo'],['tatti','poo']]
     
     k=str_var.split(' ')
@@ -104,6 +104,7 @@ def get_emoji(str_var):
                 flag=1;
 
     if flag == 1:
+        arr.append("'")
         return " ".join(arr[:5])
     return "Sorry not found!!!"
     
@@ -168,7 +169,7 @@ def post_facebook_message(fbid, recevied_message):
         }
     }
     }
-    response_msg = json.dumps({"recipient":{"id":fbid}, "message":message_object})
+response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":joke_text}})
     response_msg2 = json.dumps({"recipient":{"id":fbid}, "message":message_object2})
 #response_msg2 = json.dumps({"recipient":{"id":fbid}, "message":message_object})
     status = requests.post(post_message_url, headers={"Content-Type": "application/json"},data=response_msg)
@@ -212,7 +213,7 @@ class MyQuoteBotView(generic.View):
                     try:
                         post_facebook_message2(message['sender']['id'], str(message['message']['attachments'][0]['payload']['url']))
                     except:
-                        return HttpResponse("oops")    
+                        return HttpResponse("oops")
     
         return HttpResponse()
 
