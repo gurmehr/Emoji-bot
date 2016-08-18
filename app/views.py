@@ -86,7 +86,7 @@ def get_emoji(str_var):
     if str_var.lower() in "*,random,anything":
         random.shuffle(emoji_arr)
         return emoji_arr[0][0]
-    arr.append("Emojis:")
+    arr.append(" ")
     try0=[['smile','smiling'],['sad','disappointed'],['shocked','flushed'],['potty','poo'],['tatti','poo']]
     
     k=str_var.split(' ')
@@ -206,13 +206,13 @@ class MyQuoteBotView(generic.View):
                     # Assuming the sender only sends text. Non-text messages like stickers, audio, pictures
                     # are sent as attachments and must be handled accordingly.
                     try:
-                        post_facebook_message2(message['sender']['id'], str(message['message']['attachments'][0]['payload']['url']))
-                    except:
-                        post_facebook_message(message['sender']['id'], 'oops')
-                    try:
                         post_facebook_message(message['sender']['id'], message['message']['text'])
                     except:
                         return HttpResponse("oops")
+                    try:
+                        post_facebook_message2(message['sender']['id'], str(message['message']['attachments'][0]['payload']['url']))
+                    except:
+                        return HttpResponse("oops")    
     
         return HttpResponse()
 
