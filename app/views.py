@@ -86,7 +86,6 @@ def get_emoji(str_var):
     if str_var.lower() in "*,random,anything":
         random.shuffle(emoji_arr)
         return emoji_arr[0][0]
-    arr.append("")
     try0=[['smile','smiling'],['sad','disappointed'],['shocked','flushed'],['potty','poo'],['tatti','poo']]
     
     k=str_var.split(' ')
@@ -104,7 +103,6 @@ def get_emoji(str_var):
                 flag=1;
 
     if flag == 1:
-        arr.append("'")
         return ",".join(arr[:5])
     return "Sorry not found!!!"
     
