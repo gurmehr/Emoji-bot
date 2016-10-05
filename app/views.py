@@ -113,7 +113,7 @@ def get_emoji(str_var):
     
 
 
-PAGE_ACCESS_TOKEN ='EAANMgk5XWZBEBALsqxrZBGDD3SxOUxePVnvPwy2ZCB0vS7J1fdaSMZCCwGWwpwf0bZAMb0qwaznFWkqZCDqhQPeZBfRzGlCaNZBd9DUTzuaLxuCM2ZC33Gq4qdDws6B1MJhW6FovTOvSTsZAkqeokWZBQuW7JJotTnYXWrLLDZCeJUeamQZDZD'
+PAGE_ACCESS_TOKEN ='EAAZAtVYDpEMQBAG0JzZChDbOKFSWeqD6l8UTzU6CbfX1San0tCnWESk18LZCTYorkJAOdVHyvVISZCNCAKv5SGWluK2jI1vALu3FwvzO1kBT1fw3ZA99nVsvn8L3EvWA8M7WoppJC3fZCNKnNYU2FZCTLzvECX4DP8L4K1INJI70QZDZD'
 def post_facebook_message2(fbid, recevied_message):
     post_message_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
     message_object = {
@@ -137,7 +137,7 @@ def post_facebook_message(fbid, recevied_message):
     try:
         user_details_url = "https://graph.facebook.com/v2.6/%s"%fbid
         user_details_params = {'fields':'first_name,last_name,profile_pic', 'access_token':PAGE_ACCESS_TOKEN}
-        user_details = requests.get(user_details_url, user_details_params).json()
+        user_details = requests.get(user_details_url,user_details_params).json()
         joke_text = 'Yo '+user_details['first_name']+'..! i am fine and ' + reply_text
     except:
         joke_text = 'Yo ' + reply_text
